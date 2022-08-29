@@ -3,10 +3,14 @@ logging.basicConfig(level=logging.DEBUG)
 
 dzialanie=input("Podaj działanie, posługując się odpowiednią liczbą: 1 Dodawanie, 2 Odejmowanie, 3 Mnożenie, 4 Dzielenie: ")
 if dzialanie=="1":
-    liczba1=input("Podaj składnik 1. ")
-    liczba2=input("Podaj składnik 2. ")
-    logging.info("Dodaję %.2f i %.2f." %(float(liczba1), float(liczba2)))
-    wynik = float(liczba1) + float(liczba2)
+    liczba_skladnikow=input("Podaj liczbę składników: ")
+    skladniki=[]
+    wynik=0
+    for i in range(0, int(liczba_skladnikow)):
+        skladnik=input("Podaj kolejny składnik. ")
+        skladniki.append(skladnik)
+        wynik=wynik+float(skladnik)
+    logging.info("Dodaję %.0f składniki(ów)" %(len(skladniki)))
 
 elif dzialanie=="2":
     liczba1=input("Podaj odjemną. ")
