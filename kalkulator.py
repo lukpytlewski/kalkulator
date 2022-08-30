@@ -26,7 +26,7 @@ if __name__ == "__main__":
     dzialanie = input(
         "Podaj działanie, posługując się odpowiednią liczbą: 1 Dodawanie, 2 Odejmowanie, 3 Mnożenie, 4 Dzielenie: "
     )
-    if dzialanie not in ["1", "2", "3", "4"]:
+    if dzialanie not in {"1", "2", "3", "4"}:
         print("Przykro mi, nie wykonałeś polecenia poprawnie.")
     else:
 
@@ -36,12 +36,9 @@ if __name__ == "__main__":
             wynik = 0
             for i in range(int(liczba_skladnikow)):
                 skladnik = float(input("Podaj kolejny składnik. "))
-                skladniki.append(skladnik)
-                if i == 0:
-                    pass
-                else:
+                if i != 0:
                     logging.info("Dodaję %.2f i %.2f" % (wynik, skladnik))
-                wynik = dodawanie(wynik, skladniki[i])
+                wynik = dodawanie(wynik, skladnik)
 
         elif dzialanie == "2":
             liczba1 = float(input("Podaj odjemną. "))
@@ -51,16 +48,12 @@ if __name__ == "__main__":
 
         elif dzialanie == "3":
             liczba_czynnikow = float(input("Podaj liczbę czynników: "))
-            czynniki = []
             wynik = 1
             for i in range(int(liczba_czynnikow)):
                 czynnik = float(input("Podaj kolejny czynnik. "))
-                czynniki.append(czynnik)
-                if i == 0:
-                    pass
-                else:
+                if i != 0:
                     logging.info("Mnożę %.2f i %.2f." % (wynik, czynnik))
-                wynik = mnozenie(wynik, czynniki[i])
+                wynik = mnozenie(wynik, czynnik)
 
         elif dzialanie == "4":
             liczba1 = float(input("Podaj dzielną. "))
@@ -68,7 +61,7 @@ if __name__ == "__main__":
             logging.info("Dzielę %.2f przez %.2f." % (liczba1, liczba2))
             wynik = dzielenie(liczba1, liczba2)
 
-        if dzialanie == "4" and liczba2 == 0:
+        if type(wynik) != float:
             print(wynik)
         else:
             print("Wynik to: %.2f" % (wynik))
